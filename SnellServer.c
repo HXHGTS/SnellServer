@@ -103,7 +103,6 @@ int install_snell() {
     system("curl https://raw.githubusercontent.com/HXHGTS/SnellServer/main/snell.service > /usr/lib/systemd/system/snell.service");
     system("systemctl daemon-reload");
     system("systemctl enable snell && systemctl start snell");
-    system("socat TCP6-LISTEN:443,reuseaddr,fork TCP4:127.0.0.1:443");
     printf("正在验证snell启动，不为空则启动成功. . .\n");
     system("ss -lp | grep snell");
     printf("snell部署完成！\n");
