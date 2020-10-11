@@ -120,6 +120,7 @@ int SnellUpdate() {
     system(command);
     sprintf(command, "unzip snell-server-v%s-linux-amd64.zip",version);
     system(command);
+    system("rm -rf /usr/local/bin/snell-server");
     system("mv snell-server /usr/local/bin/");
     sprintf(command, "rm -rf snell-server-v%s-linux-amd64.zip",version);
     system(command);
