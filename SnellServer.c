@@ -31,6 +31,17 @@ Menu:UI();
     else if (mode == 4) {
         printf("正在关闭snell. . .\n");
         system("systemctl stop snell");
+        printf("正在生成配置文件. . .\n");
+        system("curl ifconfig.me > /etc/snell/ip.txt");
+        config = fopen("/etc/snell/snell-server.conf", "w");
+        fprintf(config, "[snell-server]\n");
+        fprintf(config, "listen = 0.0.0.0:443\n");
+        fprintf(config, "obfs = tls\n");
+        fprintf(config, "psk = ");
+        fclose(config);
+        printf("正在生成强密码. . .\n");
+        system("pwgen -s 28 1 > /etc/snell/passwd.conf");
+        system("cat /etc/snell/passwd.conf >> /etc/snell/snell-server.conf");
         config = fopen("/etc/snell/ip.txt", "r");
         fscanf(config, "%s", ip);
         fclose(config);
