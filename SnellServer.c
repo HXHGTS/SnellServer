@@ -3,7 +3,7 @@
 
 
 FILE* config;
-char version[15],command[190];
+char version[15],command[190],ip[16],passwd[30];
 int mode;
 
 int main() {
@@ -31,16 +31,15 @@ Menu:UI();
     else if (mode == 4) {
         printf("正在关闭snell. . .\n");
         system("systemctl stop snell");
-        printf("正在生成配置文件. . .\n");
-        config = fopen("/etc/snell/snell-server.conf", "w");
-        fprintf(config, "[snell-server]\n");
-        fprintf(config, "listen = 0.0.0.0:443\n");
-        fprintf(config, "obfs = tls\n");
-        fprintf(config, "psk = ");
+        config = fopen("/etc/snell/ip.txt", "r");
+        fscanf(config, "%s", ip);
         fclose(config);
-        printf("正在生成强密码. . .\n");
-        system("pwgen -s 28 1 > /etc/snell/passwd.conf");
-        system("cat /etc/snell/passwd.conf >> /etc/snell/snell-server.conf");
+        config = fopen("/etc/snell/passwd.conf", "r");
+        fscanf(config, "%s", passwd);
+        fclose(config);
+        config = fopen("/etc/snell/clash.yaml", "w");
+        fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls}}\n", ip, ip, passwd);
+        fclose(config);
         printf("正在启动snell. . .\n");
         system("systemctl start snell");
         printf("正在验证snell启动，不为空则启动成功. . .\n");
@@ -48,6 +47,8 @@ Menu:UI();
         printf("snell部署完成！\n");
         printf("\nSnell配置:\n\n");
         system("cat /etc/snell/snell-server.conf");
+        printf("\nClash配置:\n\n");
+        system("cat /etc/snell/clash.yaml");
         printf("\n\n");
         goto Menu;
     }
@@ -90,6 +91,7 @@ int install_snell() {
     system("mv snell-server /usr/local/bin/");
     system("rm -rf snell-server-v2.0.3-linux-amd64.zip");
     printf("正在生成配置文件. . .\n");
+    system("curl ifconfig.me > /etc/snell/ip.txt");
     config = fopen("/etc/snell/snell-server.conf", "w");
     fprintf(config, "[snell-server]\n");
     fprintf(config, "listen = 0.0.0.0:443\n");
@@ -99,6 +101,15 @@ int install_snell() {
     printf("正在生成强密码. . .\n");
     system("pwgen -s 28 1 > /etc/snell/passwd.conf");
     system("cat /etc/snell/passwd.conf >> /etc/snell/snell-server.conf");
+    config = fopen("/etc/snell/ip.txt", "r");
+    fscanf(config, "%s", ip);
+    fclose(config);
+    config = fopen("/etc/snell/passwd.conf", "r");
+    fscanf(config, "%s",passwd);
+    fclose(config);
+    config = fopen("/etc/snell/clash.yaml", "w");
+    fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls}}\n",ip,ip,passwd);
+    fclose(config);
     printf("正在启动snell并将snell写入开机引导项. . .\n");
     system("curl https://raw.githubusercontent.com/HXHGTS/SnellServer/main/snell.service > /usr/lib/systemd/system/snell.service");
     system("systemctl daemon-reload");
@@ -108,6 +119,8 @@ int install_snell() {
     printf("snell部署完成！\n");
     printf("\nSnell配置:\n\n");
     system("cat /etc/snell/snell-server.conf");
+    printf("\nClash配置:\n\n");
+    system("cat /etc/snell/clash.yaml");
     printf("\n\n");
     return 0;
 }
