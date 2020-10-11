@@ -15,10 +15,6 @@ yum install -y gcc wget && wget https://github.com/HXHGTS/SnellServer/raw/main/S
 ```
 并选1继续安装
 
-### Clash配置示例:
-```
-  - {name: ip_addr, server: ip_addr, port: 443, type: snell, psk: password, obfs-opts: {mode: tls}}
-```
 ### 安装前准备：
 
 1.脚本仅支持CentOS系统，vps必须为KVM或XEN架构
