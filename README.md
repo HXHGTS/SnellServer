@@ -5,14 +5,14 @@
 搭建snell服务器
 
 ### 一句话执行(CentOS):
-```
-yum install -y gcc wget && wget https://github.com/HXHGTS/SnellServer/raw/main/SnellServer.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer
-```
+
+`yum install -y gcc wget && wget https://github.com/HXHGTS/SnellServer/raw/main/SnellServer.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
+
 
 第一次点击安装后会自动升级系统内核并触发重启，重启后输入
-```
-./SnellServer
-```
+
+`./SnellServer`
+
 并选1继续安装
 
 ### 安装前准备：
