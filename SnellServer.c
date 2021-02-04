@@ -102,6 +102,7 @@ int install_snell() {
     system("mv snell-server /usr/local/bin/");
     system("rm -rf snell-server-v2.0.3-linux-amd64.zip");
     printf("正在生成配置文件. . .\n");
+    system("echo '216.239.38.21 ifconfig.me' >> /etc/hosts");
     system("curl ifconfig.me/ip > /etc/snell/ip.txt");
     config = fopen("/etc/snell/snell-server.conf", "w");
     fprintf(config, "[snell-server]\n");
