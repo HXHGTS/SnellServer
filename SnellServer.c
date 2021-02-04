@@ -102,7 +102,7 @@ int install_snell() {
     system("mv snell-server /usr/local/bin/");
     system("rm -rf snell-server-v2.0.3-linux-amd64.zip");
     printf("正在生成配置文件. . .\n");
-    system("curl ifconfig.me > /etc/snell/ip.txt");
+    system("curl ifconfig.me/ip > /etc/snell/ip.txt");
     config = fopen("/etc/snell/snell-server.conf", "w");
     fprintf(config, "[snell-server]\n");
     fprintf(config, "listen = 0.0.0.0:443\n");
@@ -122,7 +122,7 @@ int install_snell() {
     fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls}}\n",ip,ip,passwd);
     fclose(config);
     printf("正在启动snell并将snell写入开机引导项. . .\n");
-    system("curl https://raw.githubusercontent.com/HXHGTS/SnellServer/main/snell.service > /usr/lib/systemd/system/snell.service");
+    system("curl https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/snell.service > /usr/lib/systemd/system/snell.service");
     system("systemctl daemon-reload");
     system("systemctl enable snell && systemctl start snell");
     printf("正在验证snell启动，不为空则启动成功. . .\n");
@@ -159,13 +159,13 @@ int SnellUpdate() {
 int KernelUpdate() {
     if ((fopen("KernelUpdate.sh", "r")) == NULL) {
         printf("正在升级新内核. . .\n");
-        system("wget https://github.com/HXHGTS/TCPOptimization/raw/master/KernelUpdate.sh");
+        system("wget https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/KernelUpdate.sh -O KernelUpdate.sh");
         system("chmod +x KernelUpdate.sh");
         printf("正在升级，将自动触发重启以应用配置. . .\n");
         system("bash KernelUpdate.sh");
     }
     else {
-        system("wget https://github.com/HXHGTS/TCPOptimization/raw/master/TCPO.sh");
+        system("wget https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh -O TCPO.sh");
         system("chmod +x TCPO.sh");
         system("bash TCPO.sh");
     }
