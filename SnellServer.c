@@ -136,7 +136,9 @@ int install_snell() {
     return 0;
 }
 int SnellUpdate() {
-    printf("请输入当前最新版本号，如2.0.3:");
+    printf("正在读取最新版本号. . .\n");
+    system("curl https://github.com/surge-networks/snell/releases/latest");
+    printf("请将上方显示的最新版本号粘贴至此，如2.0.3:");
     scanf("%s", version);
     printf("正在关闭snell. . .\n");
     system("systemctl stop snell");
