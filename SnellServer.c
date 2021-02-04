@@ -142,7 +142,7 @@ int SnellUpdate() {
     scanf("%s", version);
     printf("正在关闭snell. . .\n");
     system("systemctl stop snell");
-    sprintf(command,"wget https://github.com/surge-networks/snell/releases/download/v%s/snell-server-v%s-linux-amd64.zip -O snell-server-v%s-linux-amd64.zip",version,version,version);
+    sprintf(command,"wget https://github.com/surge-networks/snell//releases/latest/download/snell-server-v%s-linux-amd64.zip -O snell-server-v%s-linux-amd64.zip",version,version);
     system(command);
     sprintf(command, "unzip snell-server-v%s-linux-amd64.zip",version);
     system(command);
