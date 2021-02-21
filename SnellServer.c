@@ -168,9 +168,7 @@ int KernelUpdate() {
         system("bash KernelUpdate.sh");
     }
     else {
-        system("wget https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh -O TCPO.sh");
-        system("chmod +x TCPO.sh");
-        system("bash TCPO.sh");
+        system("curl -sSL https://cdn.jsdelivr.net/gh/HXHGTS/TCPOptimization/TCPO.sh | sh");
     }
     return 0;
 }
