@@ -4,10 +4,13 @@
 
 搭建snell服务器，注:snell协议不转发udp数据包，无法用于游戏加速！
 
-### 一句话执行(CentOS):
+### 安装(CentOS):
 
+KVM/XEN执行:
 `yum install -y gcc wget && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
 
+OpenVZ执行:
+`yum install -y gcc wget && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer_no_bbr.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
 
 第一次点击安装后会自动升级系统内核并触发重启，重启后输入
 
