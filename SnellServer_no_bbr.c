@@ -135,6 +135,7 @@ int install_snell() {
     printf("\n\n");
     return 0;
 }
+
 int SnellUpdate() {
     printf("正在读取最新版本号. . .\n");
     system("curl https://github.com/surge-networks/snell/releases/latest");
