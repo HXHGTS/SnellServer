@@ -12,6 +12,11 @@ KVM/XEN执行:
 OpenVZ执行:
 `yum install -y gcc wget && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer_no_bbr.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
 
+### 安装(CentOS8):
+
+KVM/XEN执行:
+`yum install -y gcc wget && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer_centos8.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
+
 ### 安装(Debian11):
 
 KVM/XEN执行:
