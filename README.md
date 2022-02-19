@@ -30,7 +30,7 @@ KVM/XEN执行:
 
 ### 安装前准备：
 
-1.脚本仅支持CentOS7系统
+1.脚本仅支持CentOS7/Debian10/Debian11系统
 
 2.脚本执行需要root权限登录系统，AWS等特殊机型打开root权限方法[看这里](https://hxhgts.ml/AWSECSRoot/)
 
