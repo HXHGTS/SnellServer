@@ -96,7 +96,7 @@ int UI() {
 int install_snell() {
     KernelUpdate();
     system("setenforce 0");
-    system("yum install -y curl pwgen unzip bind-utils socat");
+    system("yum install -y curl pwgen unzip bind-utils");
     system("mkdir -p /etc/snell");
     system("wget https://github.com/surge-networks/snell/releases/download/v3.0.1/snell-server-v3.0.1-linux-amd64.zip -O snell-server-v3.0.1-linux-amd64.zip");
     system("unzip snell-server-v3.0.1-linux-amd64.zip");
