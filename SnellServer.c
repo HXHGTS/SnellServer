@@ -50,7 +50,7 @@ Menu:UI();
         fscanf(config, "%s", passwd);
         fclose(config);
         config = fopen("/etc/snell/clash.yaml", "w");
-        fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls}}\n", ip, ip, passwd);
+        fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls, host: wus-streaming-video-rt-microsoft-com.akamaized.net}}\n", ip, ip, passwd);
         fclose(config);
         printf("正在启动snell. . .\n");
         system("systemctl start snell");
@@ -121,7 +121,7 @@ int install_snell() {
     fscanf(config, "%s",passwd);
     fclose(config);
     config = fopen("/etc/snell/clash.yaml", "w");
-    fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls}}\n",ip,ip,passwd);
+    fprintf(config, "  - {name: %s, server: %s, port: 443, type: snell, psk: %s, obfs-opts: {mode: tls, host: wus-streaming-video-rt-microsoft-com.akamaized.net}}\n", ip, ip, passwd);
     fclose(config);
     printf("正在启动snell并将snell写入开机引导项. . .\n");
     system("curl https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/snell.service > /usr/lib/systemd/system/snell.service");
