@@ -12,6 +12,16 @@ KVM/XEN执行:
 OpenVZ执行:
 `yum install -y gcc wget && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer_no_bbr.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
 
+### 安装(Debian11):
+
+KVM/XEN执行:
+`apt install -y build-essential wget curl && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer_debian11.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
+
+### 安装(Debian10):
+
+KVM/XEN执行:
+`apt install -y build-essential wget curl && wget https://cdn.jsdelivr.net/gh/HXHGTS/SnellServer/SnellServer_debian10.c -O SnellServer.c && chmod +x SnellServer.c && gcc -o SnellServer SnellServer.c && ./SnellServer`
+
 第一次点击安装后会自动升级系统内核并触发重启，重启后输入
 
 `./SnellServer`
