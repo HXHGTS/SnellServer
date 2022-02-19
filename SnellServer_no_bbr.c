@@ -97,13 +97,12 @@ int install_snell() {
     system("setenforce 0");
     system("yum install -y curl pwgen unzip bind-utils socat");
     system("mkdir -p /etc/snell");
-    system("wget https://github.com/surge-networks/snell/releases/download/v2.0.3/snell-server-v2.0.3-linux-amd64.zip -O snell-server-v2.0.3-linux-amd64.zip");
-    system("unzip snell-server-v2.0.3-linux-amd64.zip");
+    system("wget https://github.com/surge-networks/snell/releases/download/v3.0.1/snell-server-v3.0.1-linux-amd64.zip -O snell-server-v3.0.1-linux-amd64.zip");
+    system("unzip snell-server-v3.0.1-linux-amd64.zip");
     system("mv snell-server /usr/local/bin/");
-    system("rm -rf snell-server-v2.0.3-linux-amd64.zip");
+    system("rm -rf snell-server-v3.0.1-linux-amd64.zip");
     printf("正在生成配置文件. . .\n");
-    system("echo '216.239.38.21 ifconfig.me' >> /etc/hosts");
-    system("curl ifconfig.me/ip > /etc/snell/ip.txt");
+    system("curl -4 api64.ipify.org > /etc/snell/ip.txt");
     config = fopen("/etc/snell/snell-server.conf", "w");
     fprintf(config, "[snell-server]\n");
     fprintf(config, "listen = 0.0.0.0:443\n");
